@@ -72,7 +72,10 @@
                                                 <c:set var="errorQuantity">
                                                     <form:errors path="quantity" cssClass="invalid-feedback" />
                                                 </c:set>
-
+                                                <div class="mb-" style="display: none;">
+                                                    <label class="form-label">Id:</label>
+                                                    <form:input type="text" class="form-control" path="id" />
+                                                </div>
                                                 <div class="mb-3 col-12 col-md-6">
                                                     <label class="form-label">Name:</label>
                                                     <form:input type="text"
