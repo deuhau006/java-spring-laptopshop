@@ -40,7 +40,7 @@ public class ProductController {
     @GetMapping("/admin/product/create")
     public String getCreateProductPage(Model model) {
         model.addAttribute("newProduct", new Product());
-        return "/admin/product/create";
+        return "admin/product/create";
     }
 
     @PostMapping(value = "/admin/product/create")
@@ -50,7 +50,7 @@ public class ProductController {
 
         // Validate
         if (newProductBindingResult.hasErrors()) {
-            return "/admin/product/create";
+            return "admin/product/create";
         }
 
         //
