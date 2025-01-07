@@ -62,12 +62,11 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Products</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col">Handle</th>
+                                            <th scope="col">Sản phẩm</th>
+                                            <th scope="col">Tên</th>
+                                            <th scope="col">Giá cả</th>
+                                            <th scope="col">Số lượng</th>
+                                            <th scope="col">Thành tiền</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -95,24 +94,12 @@
                                                 </td>
                                                 <td>
                                                     <div class="input-group quantity mt-4" style="width: 100px;">
-                                                        <div class="input-group-btn">
-                                                            <button
-                                                                class="btn btn-sm btn-minus rounded-circle bg-light border">
-                                                                <i class="fa fa-minus"></i>
-                                                            </button>
-                                                        </div>
                                                         <input type="text"
                                                             class="form-control form-control-sm text-center border-0"
                                                             value="${cartDetail.quantity}"
                                                             data-cart-detail-id="${cartDetail.id}"
                                                             data-cart-detail-price="${cartDetail.price}"
                                                             data-cart-detail-index="${status.index}" />
-                                                        <div class="input-group-btn">
-                                                            <button
-                                                                class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                                <i class="fa fa-plus"></i>
-                                                            </button>
-                                                        </div>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -121,16 +108,6 @@
                                                             value="${cartDetail.price * cartDetail.quantity}" /> đ
                                                     </p>
                                                 </td>
-                                                <td>
-                                                    <form action="/delete-cart-product/${cartDetail.id}" method="post">
-                                                        <input type="hidden" name="${_csrf.parameterName}"
-                                                            value="${_csrf.token}" />
-                                                        <button class="btn btn-md rounded-circle bg-light border mt-4">
-                                                            <i class="fa fa-times text-danger"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -138,21 +115,41 @@
                             </div>
 
                             <div class="mt-5 row g-4 justify-content-start">
-                                <div class="col-12 col-sm-8">
-                                    <div class="bg-light rounded">
+                                <div class="col-12 d-flex">
+                                    <div class="col-6">
+                                        <h5>Thông tin người nhận</h5>
+                                        <div class="row">
+                                            <div class="col-12 form-group mb-3">
+                                                <label>Tên người nhận</label>
+                                                <input class="form-control" name="receiverName" required />
+                                            </div>
+                                            <div class="col-12 form-group mb-3">
+                                                <label>Địa chỉ người nhận</label>
+                                                <input class="form-control" name="receiverAddress" required />
+                                            </div>
+                                            <div class="col-12 form-group mb-3">
+                                                <label>Số điện thoại người nhận</label>
+                                                <input class="form-control" name="receiverPhone" required />
+                                            </div>
+                                            <div class="mt-4">
+                                                <i class="fas fa-arrow-left"></i>
+                                                <a href="/cart">Quay lại giỏ hàng</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-light rounded col-5">
                                         <div class="p-4">
-                                            <h1 class="display-6 mb-4">Thông Tin <span class="fw-normal">Đơn Hàng</span>
+                                            <h1 class="display-6 mb-4">Thông Tin <span class="fw-normal">Thanh
+                                                    Toán</span>
                                             </h1>
                                             <div class="d-flex justify-content-between mb-4">
-                                                <h5 class="mb-0 me-4">Tạm tính:</h5>
-                                                <p class="mb-0" data-cart-total-price="${totalPrice}">
-                                                    <fmt:formatNumber type="number" value="${totalPrice}" /> đ
-                                                </p>
+                                                <h5 class="mb-0 me-4">Phí vận chuyển:</h5>
+                                                <p class="mb-0">0 đ</p>
                                             </div>
                                             <div class="d-flex justify-content-between">
-                                                <h5 class="mb-0 me-4">Phí vận chuyển:</h5>
+                                                <h5 class="mb-0 me-4">Hình thức:</h5>
                                                 <div class="">
-                                                    <p class="mb-0">0 đ</p>
+                                                    <p class="mb-0">Thanh toán khi nhận hàng (COD)</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -184,8 +181,8 @@
                                                 </c:forEach>
                                             </div>
                                             <button
-                                                class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">
-                                                Xác nhận đơn hàng</button>
+                                                class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
+                                                type="button">Xác nhận đơn hàng</button>
                                         </form:form>
                                     </div>
                                 </div>
