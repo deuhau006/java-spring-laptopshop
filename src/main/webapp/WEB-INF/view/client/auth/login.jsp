@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+        <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
             <!DOCTYPE html>
             <html lang="en">
 
@@ -10,8 +10,8 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="" />
                 <meta name="author" content="" />
-                <title>Login - SB Admin</title>
-                <link href="css/styles.css" rel="stylesheet" />
+                <title>Login - Laptopshop</title>
+                <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
             </head>
 
@@ -29,29 +29,30 @@
                                             <div class="card-body">
                                                 <form method="post" action="/login">
                                                     <c:if test="${param.error != null}">
-                                                        <div class="my-2" style="color: red;">
-                                                            Invalid email and password.
+                                                        <div class="my-2" style="color: red;">Invalid email or password.
                                                         </div>
                                                     </c:if>
                                                     <c:if test="${param.logout != null}">
-                                                        <div class="my-2" style="color: green;">
-                                                            Logout success.
+                                                        <div class="my-2" style="color: green;">Logout success.
                                                         </div>
                                                     </c:if>
+
                                                     <div class="form-floating mb-3">
                                                         <input class="form-control" type="email"
                                                             placeholder="name@example.com" name="username" />
-                                                        <label for="inputEmail">Email address</label>
+                                                        <label>Email address</label>
                                                     </div>
                                                     <div class="form-floating mb-3">
                                                         <input class="form-control" type="password"
                                                             placeholder="Password" name="password" />
-                                                        <label for="inputPassword">Password</label>
+                                                        <label>Password</label>
                                                     </div>
                                                     <div>
                                                         <input type="hidden" name="${_csrf.parameterName}"
                                                             value="${_csrf.token}" />
+
                                                     </div>
+
                                                     <div class="mt-4 mb-0">
                                                         <div class="d-grid">
                                                             <button class="btn btn-primary btn-block">
@@ -71,10 +72,11 @@
                             </div>
                         </main>
                     </div>
+
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>
-                <script src="js/scripts.js"></script>
+                <script src="/js/scripts.js"></script>
             </body>
 
             </html>

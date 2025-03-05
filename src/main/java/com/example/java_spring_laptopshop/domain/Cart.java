@@ -1,5 +1,6 @@
 package com.example.java_spring_laptopshop.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -14,7 +15,8 @@ import jakarta.validation.constraints.Min;
 
 @Entity
 @Table(name = "carts")
-public class Cart {
+public class Cart implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -23,7 +25,7 @@ public class Cart {
     private int sum;
 
     // user_id
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "user_id")
     private User user;
 
