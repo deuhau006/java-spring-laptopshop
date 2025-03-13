@@ -21,14 +21,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class CustomSuccessHandle implements AuthenticationSuccessHandler {
-
-    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired
     private UserService userService;
 
     protected String determineTargetUrl(final Authentication authentication) {
+
         Map<String, String> roleTargetUrlMap = new HashMap<>();
         roleTargetUrlMap.put("ROLE_USER", "/");
         roleTargetUrlMap.put("ROLE_ADMIN", "/admin");
@@ -55,14 +54,19 @@ public class CustomSuccessHandle implements AuthenticationSuccessHandler {
         // query user
         User user = this.userService.getUserByEmail(email);
         if (user != null) {
+            session.setAttribute("user", user);
             session.setAttribute("fullName", user.getFullName());
             session.setAttribute("avatar", user.getAvatar());
             session.setAttribute("id", user.getId());
             session.setAttribute("email", user.getEmail());
             int sum = user.getCart() == null ? 0 : user.getCart().getSum();
             session.setAttribute("sum", sum);
+
         }
+
     }
+
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -77,6 +81,7 @@ public class CustomSuccessHandle implements AuthenticationSuccessHandler {
 
         redirectStrategy.sendRedirect(request, response, targetUrl);
         clearAuthenticationAttributes(request, authentication);
+
     }
 
 }

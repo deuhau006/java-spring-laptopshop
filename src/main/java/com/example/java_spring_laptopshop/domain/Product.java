@@ -1,5 +1,7 @@
 package com.example.java_spring_laptopshop.domain;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,8 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

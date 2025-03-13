@@ -10,8 +10,8 @@
                     <meta charset="utf-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                    <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
-                    <meta name="author" content="Hỏi Dân IT" />
+                    <meta name="description" content="Dự án laptopshop" />
+                    <meta name="author" content="" />
                     <title>Detail Order</title>
                     <link href="/css/styles.css" rel="stylesheet" />
 
@@ -86,19 +86,11 @@
                                                                         </p>
                                                                     </td>
                                                                     <td>
-                                                                        <!-- <div class="input-group quantity mt-4"
+                                                                        <div class="input-group quantity mt-4"
                                                                             style="width: 100px;">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm text-center border-0"
                                                                                 value="${orderDetail.quantity}">
-                                                                        </div> -->
-                                                                        <div class="input-group quantity mt-4"
-                                                                            style="width: 100px;">
-                                                                            <p
-                                                                                class="form-control form-control-sm text-center border-0">
-                                                                                <fmt:formatNumber type="number"
-                                                                                    value="${orderDetail.quantity}" />
-                                                                            </p>
                                                                         </div>
                                                                     </td>
                                                                     <td>
